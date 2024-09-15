@@ -52,3 +52,6 @@ steps:
 # Specify the images that are produced by this build
 images:
   - 'us-central1-docker.pkg.dev/$PROJECT_ID/streamlit-gcp-test-2/streamlit-app'
+
+options:
+  logging: CLOUD_LOGGING_ONLY   # Set logging to cloud-only
