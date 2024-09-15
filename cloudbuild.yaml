@@ -1,0 +1,54 @@
+# # steps:
+# #   - name: 'gcr.io/cloud-builders/docker'
+# #     args: ['build', '-t', 'REGION-docker.pkg.dev/PROJECT_ID/REPO_NAME/streamlit-app', '.']
+# #   - name: 'gcr.io/cloud-builders/docker'
+# #     args: ['push', 'REGION-docker.pkg.dev/PROJECT_ID/REPO_NAME/streamlit-app']
+# # images:
+# #   - 'REGION-docker.pkg.dev/PROJECT_ID/REPO_NAME/streamlit-app'
+
+# steps:
+#   # Step 1: Build the Docker image
+#   - name: 'gcr.io/cloud-builders/docker'
+#     args: [
+#       'build',
+#       '-t',
+#       '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/streamlit-app',
+#       '.'
+#     ]
+
+#   # Step 2: Push the Docker image to Artifact Registry
+#   - name: 'gcr.io/cloud-builders/docker'
+#     args: [
+#       'push',
+#       '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/streamlit-app'
+#     ]
+
+# # Specify the images that are produced by this build
+# images:
+#   - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/streamlit-app'
+
+# # Define environment variables for region and repository name
+# substitutions:
+#   _REGION: 'us-central1'   # Set this to your desired region
+#   _REPO_NAME: 'my-repo'    # Set this to your Artifact Registry repository name
+
+steps:
+  # Step 1: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build',
+      '-t',
+      'us-central1-docker.pkg.dev/$PROJECT_ID/streamlit-gcp-test-2/streamlit-app',
+      '.'
+    ]
+
+  # Step 2: Push the Docker image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'push',
+      'us-central1-docker.pkg.dev/$PROJECT_ID/streamlit-gcp-test-2/streamlit-app'
+    ]
+
+# Specify the images that are produced by this build
+images:
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/streamlit-gcp-test-2/streamlit-app'
