@@ -32,6 +32,8 @@
 #   _REGION: 'us-central1'   # Set this to your desired region
 #   _REPO_NAME: 'my-repo'    # Set this to your Artifact Registry repository name
 
+################
+
 steps:
   # Step 1: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
